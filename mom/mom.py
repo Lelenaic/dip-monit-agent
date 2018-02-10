@@ -6,10 +6,10 @@ from settings import _Settings
 class Mom:
 
     def __init__(self):
-        self._settings = _Settings()
         if len(sys.argv) == 2:
             Mom.register()
             sys.exit()
+        self._settings = _Settings()
 
     @staticmethod
     def register():
