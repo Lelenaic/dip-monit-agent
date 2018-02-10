@@ -6,13 +6,13 @@ import os.path
 class _Settings:
 
     def __init__(self):
-        if os.path.isfile(Consts.MOM_HOME + Consts.MOM_SETTINGS_FILE):
+        if os.path.isfile(Consts.MOM_SETTINGS_FILE):
             self._load_config_file()
         else:
-            raise Exception("There is no " + Consts.MOM_SETTINGS_FILE + " in " + Consts.MOM_HOME)
+            raise Exception("There is no file: " + Consts.MOM_SETTINGS_FILE)
 
     def _load_config_file(self):
-        with open(Consts.MOM_HOME + Consts.MOM_SETTINGS_FILE, 'r') as f:
+        with open(Consts.MOM_SETTINGS_FILE, 'r') as f:
             self._conf_file = yaml.load(f)
             if self._conf_file is None:
                 self._conf_file = {}
@@ -29,5 +29,5 @@ class _Settings:
         self._save()
 
     def _save(self):
-        with open(Consts.MOM_HOME + Consts.MOM_SETTINGS_FILE, 'w') as f:
+        with open(Consts.MOM_SETTINGS_FILE, 'w') as f:
             f.write(yaml.dump(self._conf_file))
