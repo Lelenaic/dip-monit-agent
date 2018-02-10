@@ -11,9 +11,8 @@ class Mom:
             self._register()
             sys.exit()
 
-    def _send_data(self):
-        requests.post()
-
     def _register(self):
         registration_key = sys.argv[1]
-        self._settings.set(key=registration_key)
+        r = requests.get(Consts.MAIN_SERVER_API_URL + "register?key=" + registration_key)
+        api_key = r.text.strip()
+        self._settings.set(key=api_key)
