@@ -6,10 +6,10 @@ from settings import _Settings
 class Mom:
 
     def __init__(self):
+        self._settings = _Settings()
         if len(sys.argv) == 2:
             self._register()
             sys.exit()
-        self._settings = _Settings()
 
     def _register(self):
         registration_key = sys.argv[1]
