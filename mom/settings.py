@@ -6,9 +6,8 @@ import os.path
 class _Settings:
 
     def __init__(self):
-        if os.path.isfile(Consts.MOM_SETTINGS_FILE):
-            self._load_config_file()
-        else:
+        self._load_config_file()
+        if not os.path.isfile(Consts.MOM_SETTINGS_FILE):
             raise Exception("There is no file: " + Consts.MOM_SETTINGS_FILE)
 
     def _load_config_file(self):
