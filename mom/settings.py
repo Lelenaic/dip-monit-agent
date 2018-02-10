@@ -11,10 +11,13 @@ class _Settings:
             raise Exception("There is no file: " + Consts.MOM_SETTINGS_FILE)
 
     def _load_config_file(self):
-        with open(Consts.MOM_SETTINGS_FILE, 'r') as f:
-            self._conf_file = yaml.load(f)
-            if self._conf_file is None:
-                self._conf_file = {}
+        try:
+            with open(Consts.MOM_SETTINGS_FILE, 'r') as f:
+                self._conf_file = yaml.load(f)
+                if self._conf_file is None:
+                    self._conf_file = {}
+        except:
+            self._conf_file = {}
 
     def get(self, *setting):
         conf = self._conf_file
