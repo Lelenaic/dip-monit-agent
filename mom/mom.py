@@ -1,6 +1,7 @@
 import requests, sys
 from consts import Consts
 from settings import _Settings
+from cron import Cron
 import json
 
 
@@ -10,6 +11,9 @@ class Mom:
         if len(sys.argv) == 2:
             self._register()
             sys.exit()
+        else:
+            cron = Cron()
+            cron.execute()
 
     def send_data_to_master(self, data):
         headers = {'Authorization': self._settings.get('key')}
