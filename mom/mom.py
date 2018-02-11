@@ -15,11 +15,6 @@ class Mom:
             cron = Cron()
             cron.execute()
 
-    def send_data_to_master(self, data):
-        headers = {'Authorization': self._settings.get('key')}
-        form_data = {'info': json.dumps(data, ensure_ascii=False)}
-        requests.post(Consts.MAIN_SERVER_API_URL + "ping", form_data, headers=headers)
-
     def _register(self):
         registration_key = sys.argv[1]
         r = requests.get(Consts.MAIN_SERVER_API_URL + "register?key=" + registration_key)

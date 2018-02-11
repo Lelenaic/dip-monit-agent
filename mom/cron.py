@@ -1,11 +1,11 @@
 from hostinfo import HostInfo
-from mom import Mom
+from requester import Requester
 
 
 class Cron:
     def __init__(self):
-        self._app = Mom()
+        self._r = Requester()
 
     def execute(self):
         info = HostInfo().get_info()
-        self._app.send_data_to_master(info)
+        self._r.send_data_to_master(info)
