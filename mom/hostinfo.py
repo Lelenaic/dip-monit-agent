@@ -1,4 +1,5 @@
 import psutil
+from socket import gethostname
 
 
 class HostInfo:
@@ -19,7 +20,7 @@ class HostInfo:
 
     @staticmethod
     def get_cpu_percent():
-        return psutil.cpu_percent()
+        return psutil.cpu_percent(interval=1)
 
     @staticmethod
     def get_memory():
