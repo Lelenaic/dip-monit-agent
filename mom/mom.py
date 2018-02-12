@@ -2,7 +2,6 @@ import requests, sys
 from consts import Consts
 from settings import _Settings
 from cron import Cron
-import json
 
 
 class Mom:
