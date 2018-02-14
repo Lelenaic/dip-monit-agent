@@ -1,5 +1,4 @@
 import psutil
-from socket import gethostname
 
 
 class HostInfo:
@@ -9,6 +8,7 @@ class HostInfo:
 
     def _init_info(self):
         self._info['cpu'] = self.get_cpu_percent()
+        self._info['uptime'] = psutil.boot_time()
         mem = self.get_memory()
         self._info['memory'] = {}
         self._info['memory']['total'] = mem.total
