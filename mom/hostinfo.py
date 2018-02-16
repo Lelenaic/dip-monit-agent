@@ -56,4 +56,4 @@ class HostInfo:
 
     @staticmethod
     def get_network():
-        return {'download': psutil.net_io_counters().bytes_recv, 'upload': psutil.net_io_counters().bytes_sent}
+        return {'download': (psutil.net_io_counters().bytes_recv)/1000, 'upload': (psutil.net_io_counters().bytes_sent)/1000}
