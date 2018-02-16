@@ -1,6 +1,4 @@
 import psutil
-import json
-from collections import OrderedDict
 
 
 class HostInfo:
@@ -17,6 +15,7 @@ class HostInfo:
         self._info['memory']['used'] = mem.used
         self._info['disks'] = self.get_all_disks_info()
         self._info['process'] = self.get_process()
+        self._info['network'] = self.get_network()
 
     def get_info(self):
         return self._info
@@ -54,3 +53,7 @@ class HostInfo:
         for p in sorted(psutil.process_iter(attrs=['name', 'memory_percent']), key=lambda p: p.info['memory_percent'])[-10:]:
             info[p.info['name']] = p.info['memory_percent']
         return info
+
+    @staticmethod
+    def get_network():
+        return {'download': psutil.net_io_counters().bytes_recv, 'upload': psutil.net_io_counters().bytes_sent}
